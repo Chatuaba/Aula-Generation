@@ -21,8 +21,5 @@ public class Ex02 {
 			System.out.println("Soma dos pares é igual a "+soma);
 			System.out.println(impar);
 			System.out.println("Quantidade de ímpares é igual a "+quant);
-			
-			
-			
 		}
 }
