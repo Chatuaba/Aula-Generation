@@ -19,7 +19,7 @@ public class Ex02 {
 		
 		
 		if(avião1.vooViavel()==true&& avião1.getLugares()<=60) {
-			System.out.println("O faturamento do vôo de "+avião1.getModelo()+" é de R$"+(avião1.getPreço())*(avião1.getLugares()));
+			System.out.println("O faturamento do vôo de "+avião1.getModelo()+" é de R$"+(avião1.getPreço())*(avião1.getLugares())+" com "+avião1.getLugares()+" lugares ocupados.");
 			
 		}
 		
