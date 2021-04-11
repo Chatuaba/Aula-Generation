@@ -61,8 +61,28 @@ public class projetoUsuario {
 							switch (op3) {
 								
 								case 1:
+									System.out.println("Patinetes Disponíveis, digite  o número da que deseja alugar:");
 									
+									for(int i=0;i<locacoes.size();i++) {
+										
+										if(locacoes.get(i).isDisponivel()&&locacoes.get(i).getTipo()==0) {
+											
+											System.out.println(i+" - "+locacoes.get(i).getModelo()+" Tamanho "+locacoes.get(i).getTamanho());
+										}
+									}
+									int cont=scanner.nextInt();
+									System.out.println("Alugar de:");
+									String scan=scanner.next();
+									locacoes.get(cont).setDataLocacao(scan);
+									System.out.println("Alugar até:");
+									scan=scanner.next();
+									locacoes.get(cont).setDataDevolucao(scan);
+									locacoes.get(cont).setDisponivel(false);
+									locacoes.get(cont).setCodigoID(loo);
+									System.out.println("Alugado!");
 									break;
+								
+									
 								
 								case 2:
 									
@@ -75,9 +95,9 @@ public class projetoUsuario {
 											System.out.println(i+" - "+locacoes.get(i).getModelo()+" Tamanho "+locacoes.get(i).getTamanho());
 										}
 									}
-									int cont=scanner.nextInt();
+									 cont=scanner.nextInt();
 									System.out.println("Alugar de:");
-									String scan=scanner.next();
+									scan=scanner.next();
 									locacoes.get(cont).setDataLocacao(scan);
 									System.out.println("Alugar até:");
 									scan=scanner.next();
@@ -193,19 +213,17 @@ public class projetoUsuario {
 				
 				switch (op4) {
 					
-					case 1://patinete
-						System.out.println("Insira os dados do veículo:\n modelo:");
-						String Modelo=scanner.next().toLowerCase();
-						System.out.println("Tamanho ");
-						String Tamanho=scanner.next().toLowerCase();
-						System.out.println("Valor do aluguel:");
-						double valor;
-
-						// parte do danilo/nohan
-						
-						
-						
-						break;
+						case 1://patinete
+							System.out.println("Insira os dados do veículo:\n modelo:");
+							String Modelo=scanner.next().toLowerCase();
+							System.out.println("Tamanho ");
+							String Tamanho=scanner.next().toLowerCase();
+							System.out.println("Valor do aluguel:");
+							double valor=scanner.nextDouble();
+							patinete patinete = new patinete(Modelo,Tamanho,valor,0);
+							patinete.setDisponivel(true);
+							locacoes.add(patinete);	
+							break;
 					case 2://bicicleta
 						System.out.println("Insira os dados do veículo:\n modelo:");
 						String Modelo1=scanner.next().toLowerCase();
