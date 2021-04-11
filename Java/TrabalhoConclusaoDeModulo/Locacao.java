@@ -1,12 +1,16 @@
 package TrabalhoConclusaoDeModulo;
 
+import java.text.Format;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 public abstract class Locacao {
 	
 	private double valor;
-	private String aquisicao; // quando chegou no estoque
-	private String acessorios; // porta garrafa, bagajeiro
-	private int dataLocacao; 
-	private int dataDevolucao; 
+	private String dataLocacao; 
+	private String dataDevolucao; 
 	private int tipo;
 	boolean disponivel; // atributo que retorna true ou false
 	private int CodigoID;
@@ -28,11 +32,10 @@ public abstract class Locacao {
 	}
 	
 	
-	public Locacao(double valor, String aquisicao,int x) {
+	public Locacao(double valor,int x) {
 		
 		disponivel=true;
 		this.valor=valor;
-		this.aquisicao=aquisicao;
 		tipo=x;
 		
 	}
@@ -49,16 +52,6 @@ public abstract class Locacao {
 		this.tipo = tipo;
 	}
 
-	public boolean atraso(int data) { // checa se o produto esta em atraso
-		
-		if(data >= dataDevolucao && !disponivel )
-		{
-			return true;
-		}else {
-			return false;
-		}
-		
-	}
 	
 	public double getValor() {
 		return valor;
@@ -68,35 +61,28 @@ public abstract class Locacao {
 		this.valor = valor;
 	}
 
-	public String getAquisicao() {
-		return aquisicao;
+
+	public String getDataLocacao() {
+		DateTimeFormatter parserData = DateTimeFormatter.ofPattern("ddMMuuuu");
+        LocalDate data = LocalDate.parse(dataLocacao, parserData);
+        DateTimeFormatter formatterData = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+        String dataFormatada = formatterData.format(data);
+        return dataFormatada;
 	}
 
-	public void setAquisicao(String aquisicao) {
-		this.aquisicao = aquisicao;
-	}
-
-	public String getAcessorios() {
-		return acessorios;
-	}
-
-	public void setAcessorios(String acessorios) {
-		this.acessorios = acessorios;
-	}
-
-	public int getDataLocacao() {
-		return dataLocacao;
-	}
-
-	public void setDataLocacao(int dataLocacao) {
+	public void setDataLocacao(String dataLocacao) {
 		this.dataLocacao = dataLocacao;
 	}
 
-	public int getDataDevolucao() {
-		return dataDevolucao;
+	public String getDataDevolucao() {
+		DateTimeFormatter parserData = DateTimeFormatter.ofPattern("ddMMuuuu");
+        LocalDate data = LocalDate.parse(dataDevolucao, parserData);
+        DateTimeFormatter formatterData = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+        String dataFormatada = formatterData.format(data);
+        return dataFormatada;
 	}
 
-	public void setDataDevolucao(int dataDevolucao) {
+	public void setDataDevolucao(String dataDevolucao) {
 		this.dataDevolucao = dataDevolucao;
 	}
 
@@ -108,7 +94,10 @@ public abstract class Locacao {
 		this.disponivel = disponivel;
 	}
 	
-	
-	
-
+	public String formatarMoeda() {
+        NumberFormat nf = NumberFormat.getCurrencyInstance();
+        nf.setMinimumFractionDigits(2);
+        String formatoMoeda = nf.format(valor);
+        return formatoMoeda;
+    }
 }
