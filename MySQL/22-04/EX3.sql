@@ -16,7 +16,7 @@ CREATE table `tb_produto`(
 	`faixa` VARCHAR(30),
     `nome` VARCHAR(30),
     `uso` VARCHAR(200),
-    `tb_catrgoria_id` int NOT NULL, 
+    `tb_categoria_id` int NOT NULL, 
     FOREIGN KEY(`tb_categoria_id`) REFERENCES `tb_categoria` (`id`)
 );
 
@@ -36,12 +36,12 @@ INSERT INTO `db_farmacia_do_bem`.`tb_produto` (`preco`, `faixa`, `nome`, `uso`, 
 INSERT INTO `db_farmacia_do_bem`.`tb_produto` (`preco`, `faixa`, `nome`, `uso`, `tb_categoria_id`) VALUES ('8', '-', 'Whey', 'oral', '5');
 
 
-SELECT `p`.`nome` FROM `tb_personagem` AS `p` JOIN `tb_classe` AS `c` ON `p`.`tb_classe_id`=`c`.`id_class` WHERE `c`.`ataque` >50;
+SELECT * FROM `tb_produto` WHERE `preco` > 50.00;
 
-SELECT `p`.`nome` FROM `tb_personagem` AS `p` JOIN `tb_classe` AS `c` ON `p`.`tb_classe_id`=`c`.`id_class` WHERE `c`.`defesa` <60 AND `c`.`defesa` >3;
+SELECT * FROM `tb_produto` WHERE `preco` >3.00 AND `preco`<60;
 
-SELECT `p`.`nome` FROM `tb_personagem` AS `p` WHERE `p`.`nome` LIKE '%b%';
+SELECT `nome` FROM `tb_produto` AS `p` WHERE `p`.`nome` LIKE '%b%';
 
-SELECT `p`.`nome` FROM `tb_personagem` AS `p` INNER JOIN `tb_classe` AS `c` ON `p`.`tb_classe_id`=`c`.`id_class` WHERE `c`.`defesa` <2000 AND `c`.`defesa` >1000;
+SELECT * FROM `tb_produto` AS `p` INNER JOIN `tb_categoria` AS `c` ON `p`.`tb_categoria_id`=`c`.`id`;
 
-SELECT `p`.`nome`,`c`.`nome` FROM `tb_personagem` AS `p` JOIN `tb_classe` AS `c` ON `p`.`tb_classe_id`=`c`.`id_class` WHERE `c`.`nome` LIKE 'produtos_fit';
+SELECT * FROM `tb_produto` AS `p` JOIN `tb_categoria` AS `c` ON `p`.`tb_categoria_id`=`c`.`id` WHERE `c`.`nome` LIKE 'vitaminas';

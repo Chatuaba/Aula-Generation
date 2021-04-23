@@ -1,46 +1,47 @@
-CREATE DATABASE `db_generation_game_online`;
+CREATE DATABASE  `nome db_cidade_das_carnes`;
 
-USE `db_generation_game_online`;
+USE `nome db_cidade_das_carnes`;
 
-CREATE TABLE  `tb_classe`(
-	`id_class` INT NOT NULL auto_increment primary key,
+CREATE TABLE  `tb_categoria`(
+	`id` INT NOT NULL auto_increment primary key,
     `nome` VARCHAR(30) ,
-    `defesa` INT NOT NULL,
-    `ataque` INT NOT NULL
+    `marca`  VARCHAR(30) ,
+    `estoque` BOOLEAN
 );
 
 
-CREATE table `tb_personagem`(
+CREATE table `tb_produto`(
 	`id_char` INT NOT NULL auto_increment primary key,
-	`nivel` INT NOT NULL,
-	`equipamento` VARCHAR(30),
-    `nome` VARCHAR(30),
-    `inventario` VARCHAR(200),
-    `tb_classe_id` int NOT NULL, 
-    FOREIGN KEY(`tb_classe_id`) REFERENCES `tb_classe` (`id_class`)
+	`preco` INT NOT NULL,
+	`desconto` BOOLEAN,
+    `corte` VARCHAR(30),
+    `moido` BOOLEAN,
+    `tb_categoria_id` int NOT NULL, 
+    FOREIGN KEY(`tb_categoria_id`) REFERENCES `tb_categoria` (`id`)
 );
 
-INSERT INTO `db_generation_game_online`.`tb_classe` (`nome`, `defesa`, `ataque`) VALUES ('arqueiro', '500', '3500');
-INSERT INTO `db_generation_game_online`.`tb_classe` (`nome`, `defesa`, `ataque`) VALUES ('mago', '-1', '9001');
-INSERT INTO `db_generation_game_online`.`tb_classe` (`nome`, `defesa`, `ataque`) VALUES ('guerreiro', '3000', '2000');
-INSERT INTO `db_generation_game_online`.`tb_classe` (`nome`, `defesa`, `ataque`) VALUES ('bardo', '1500', '1500');
-INSERT INTO `db_generation_game_online`.`tb_classe` (`nome`, `defesa`, `ataque`) VALUES ('barbaro', '1800', '3000');
+INSERT INTO `nome db_cidade_das_carnes`.`tb_categoria` (`nome`, `marca`, `estoque`) VALUES ('bovina', 'friboi', '20');
+INSERT INTO `nome db_cidade_das_carnes`.`tb_categoria`  (`nome`, `marca`, `estoque`) VALUES ('suina', 'seara', '50');
+INSERT INTO `nome db_cidade_das_carnes`.`tb_categoria`  (`nome`, `marca`, `estoque`) VALUES ('aves', 'sadia', '30');
+INSERT INTO `nome db_cidade_das_carnes`.`tb_categoria`  (`nome`, `marca`, `estoque`) VALUES ('frios', 'perdigao', '20');
+INSERT INTO `nome db_cidade_das_carnes`.`tb_categoria`  (`nome`, `marca`, `estoque`) VALUES ('javali', 'ceratti', '10');
 
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('1', 'espada', 'Ferrari', 'camisa', '1');
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('2', 'arco', 'Valar', 'calça', '2');
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('3', 'cajado', 'Marcao', 'cigarro', '3');
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('2', 'machado', 'luiz', 'escudo', '4');
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('3', 'laco', 'jabitu', 'pocao', '5');
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('1', 'chicote', 'frojola', 'comida', '4');
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('2', 'adaga', 'dudu', 'tenda', '3');
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('5000', 'banhammer', 'Trolarin', 'canhaoantidatabase', '2');
+INSERT INTO `nome db_cidade_das_carnes`.`tb_produto` (`preco`, `desconto`, `corte`, `moido`, `tb_categoria_id`)  VALUES ('200', true, 'paleta', true, '1');
+INSERT INTO `nome db_cidade_das_carnes`.`tb_produto` (`preco`, `desconto`, `corte`, `moido`, `tb_categoria_id`)  VALUES ('10', false, 'costela', false, '2');
+INSERT INTO `nome db_cidade_das_carnes`.`tb_produto` (`preco`, `desconto`, `corte`, `moido`, `tb_categoria_id`)  VALUES ('5', false, 'peito', false, '3');
+INSERT INTO `nome db_cidade_das_carnes`.`tb_produto` (`preco`, `desconto`, `corte`, `moido`, `tb_categoria_id`)  VALUES ('3', false, 'salsicha', false, '4');
+INSERT INTO `nome db_cidade_das_carnes`.`tb_produto` (`preco`, `desconto`, `corte`, `moido`, `tb_categoria_id`)  VALUES ('20', false, 'pernil', false, '5');
+INSERT INTO `nome db_cidade_das_carnes`.`tb_produto` (`preco`, `desconto`, `corte`, `moido`, `tb_categoria_id`)  VALUES ('50', false, 'contrafile', false, '1');
+INSERT INTO `nome db_cidade_das_carnes`.`tb_produto` (`preco`, `desconto`, `corte`, `moido`, `tb_categoria_id`)  VALUES ('13', true, 'linguica', false, '4');
+INSERT INTO `nome db_cidade_das_carnes`.`tb_produto` (`preco`, `desconto`, `corte`, `moido`, `tb_categoria_id`)  VALUES ('8', true, 'coxa', false, '3');
 
-SELECT `p`.`nome` FROM `tb_personagem` AS `p` JOIN `tb_classe` AS `c` ON `p`.`tb_classe_id`=`c`.`id_class` WHERE `c`.`ataque` >2000;
 
-SELECT `p`.`nome` FROM `tb_personagem` AS `p` JOIN `tb_classe` AS `c` ON `p`.`tb_classe_id`=`c`.`id_class` WHERE `c`.`defesa` <2000 AND `c`.`defesa` >1000;
+SELECT * FROM `tb_produto` WHERE `preco` > 50.00;
 
-SELECT `p`.`nome` FROM `tb_personagem` AS `p` WHERE `p`.`nome` LIKE '%c%';
+SELECT * FROM `tb_produto` WHERE `preco` >3.00 AND `preco`<60;
 
-SELECT `p`.`nome` FROM `tb_personagem` AS `p` INNER JOIN `tb_classe` AS `c` ON `p`.`tb_classe_id`=`c`.`id_class` WHERE `c`.`defesa` <2000 AND `c`.`defesa` >1000;
+SELECT `corte` FROM `tb_produto` AS `p` WHERE `p`.`corte` LIKE '%c%';
 
-SELECT `p`.`nome`,`c`.`nome` FROM `tb_personagem` AS `p` JOIN `tb_classe` AS `c` ON `p`.`tb_classe_id`=`c`.`id_class` WHERE `c`.`nome` LIKE 'mago';
+SELECT * FROM `tb_produto` AS `p` INNER JOIN `tb_categoria` AS `c` ON `p`.`tb_categoria_id`=`c`.`id`;
+
+SELECT * FROM `tb_produto` AS `p` JOIN `tb_categoria` AS `c` ON `p`.`tb_categoria_id`=`c`.`id` WHERE `c`.`nome` LIKE 'bovina';

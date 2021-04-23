@@ -1,46 +1,46 @@
 CREATE DATABASE `db_cursoDaMinhaVida`;
 
-USE `db_generation_game_online`;
+USE `db_cursoDaMinhaVida`;
 
 CREATE TABLE  `tb_categoria`(
 	`id` INT NOT NULL auto_increment primary key,
     `nome` VARCHAR(30) ,
-    `quantidade_cursos` INT NOT NULL,
-    `preco` INT NOT NULL
+    `marca`  VARCHAR(30) ,
+    `disponivel` BOOLEAN
 );
 
 
-CREATE table ` tb_curso`(
-	`id` INT NOT NULL auto_increment primary key,
-	`` INT NOT NULL,
-	`equipamento` VARCHAR(30),
+CREATE table `tb_curso`(
+	`id_char` INT NOT NULL auto_increment primary key,
+	`preco` INT NOT NULL,
+	`desconto` BOOLEAN,
     `nome` VARCHAR(30),
-    `inventario` VARCHAR(200),
-    `tb_classe_id` int NOT NULL, 
-    FOREIGN KEY(`tb_classe_id`) REFERENCES `tb_classe` (`id_class`)
+    `vagas` INT(3),
+    `tb_categoria_id` int NOT NULL, 
+    FOREIGN KEY(`tb_categoria_id`) REFERENCES `tb_categoria` (`id`)
 );
 
-INSERT INTO `db_generation_game_online`.`tb_classe` (`nome`, `defesa`, `ataque`) VALUES ('arqueiro', '500', '3500');
-INSERT INTO `db_generation_game_online`.`tb_classe` (`nome`, `defesa`, `ataque`) VALUES ('mago', '-1', '9001');
-INSERT INTO `db_generation_game_online`.`tb_classe` (`nome`, `defesa`, `ataque`) VALUES ('guerreiro', '3000', '2000');
-INSERT INTO `db_generation_game_online`.`tb_classe` (`nome`, `defesa`, `ataque`) VALUES ('bardo', '1500', '1500');
-INSERT INTO `db_generation_game_online`.`tb_classe` (`nome`, `defesa`, `ataque`) VALUES ('barbaro', '1800', '3000');
+INSERT INTO `db_cursoDaMinhaVida`.`tb_categoria` (`nome`, `marca`, `disponivel`) VALUES ('linguagensprogamacao', 'allura', true);
+INSERT INTO `db_cursoDaMinhaVida`.`tb_categoria` (`nome`, `marca`, `disponivel`) VALUES ('controladoresdeversao', 'udemy', true);
+INSERT INTO `db_cursoDaMinhaVida`.`tb_categoria` (`nome`, `marca`, `disponivel`) VALUES ('linguas', 'udemy', false);
+INSERT INTO `db_cursoDaMinhaVida`.`tb_categoria` (`nome`, `marca`, `disponivel`)VALUES ('databases', 'allura', true);
+INSERT INTO `db_cursoDaMinhaVida`.`tb_categoria` (`nome`, `marca`, `disponivel`) VALUES ('eletrica', 'allura', true);
 
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('1', 'espada', 'Ferrari', 'camisa', '1');
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('2', 'arco', 'Valar', 'calça', '2');
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('3', 'cajado', 'Marcao', 'cigarro', '3');
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('2', 'machado', 'luiz', 'escudo', '4');
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('3', 'laco', 'jabitu', 'pocao', '5');
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('1', 'chicote', 'frojola', 'comida', '4');
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('2', 'adaga', 'dudu', 'tenda', '3');
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('5000', 'banhammer', 'Trolarin', 'canhaoantidatabase', '2');
+INSERT INTO `db_cursoDaMinhaVida`. `tb_curso` (`preco`, `desconto`, `nome`, `vagas`, `tb_categoria_id`)    VALUES ('20', true, 'java','1', '1');
+INSERT INTO `db_cursoDaMinhaVida`. `tb_curso` (`preco`, `desconto`, `nome`, `vagas`, `tb_categoria_id`)    VALUES ('20', false, 'git','2', '2');
+INSERT INTO `db_cursoDaMinhaVida`. `tb_curso` (`preco`, `desconto`, `nome`, `vagas`, `tb_categoria_id`)    VALUES ('30', false, 'phyton','3', '1');
+INSERT INTO `db_cursoDaMinhaVida`. `tb_curso` (`preco`, `desconto`, `nome`, `vagas`, `tb_categoria_id`)    VALUES ('4', true, 'ingles','4', '3');
+INSERT INTO `db_cursoDaMinhaVida`. `tb_curso` (`preco`, `desconto`, `nome`, `vagas`, `tb_categoria_id`)    VALUES ('500', false, 'eletronica','5', '5');
+INSERT INTO `db_cursoDaMinhaVida`. `tb_curso` (`preco`, `desconto`, `nome`, `vagas`, `tb_categoria_id`)    VALUES ('60', true, 'mongodb','6', '4');
+INSERT INTO `db_cursoDaMinhaVida`. `tb_curso` (`preco`, `desconto`, `nome`, `vagas`, `tb_categoria_id`)    VALUES ('200', false, 'eletricaresidencial','7', '5');
+INSERT INTO `db_cursoDaMinhaVida`. `tb_curso` (`preco`, `desconto`, `nome`, `vagas`, `tb_categoria_id`)    VALUES ('25', false, 'c++','7', '1');
 
-SELECT `p`.`nome` FROM `tb_personagem` AS `p` JOIN `tb_classe` AS `c` ON `p`.`tb_classe_id`=`c`.`id_class` WHERE `c`.`ataque` >2000;
+SELECT * FROM `tb_curso` WHERE `preco` > 50.00;
 
-SELECT `p`.`nome` FROM `tb_personagem` AS `p` JOIN `tb_classe` AS `c` ON `p`.`tb_classe_id`=`c`.`id_class` WHERE `c`.`defesa` <2000 AND `c`.`defesa` >1000;
+SELECT * FROM  `tb_curso` WHERE `preco` >3.00 AND `preco`<60;
 
-SELECT `p`.`nome` FROM `tb_personagem` AS `p` WHERE `p`.`nome` LIKE '%c%';
+SELECT `nome` FROM  `tb_curso` AS `p` WHERE `p`.`nome` LIKE '%j%';
 
-SELECT `p`.`nome` FROM `tb_personagem` AS `p` INNER JOIN `tb_classe` AS `c` ON `p`.`tb_classe_id`=`c`.`id_class` WHERE `c`.`defesa` <2000 AND `c`.`defesa` >1000;
+SELECT * FROM  `tb_curso` AS `p` INNER JOIN `tb_categoria` AS `c` ON `p`.`tb_categoria_id`=`c`.`id`;
 
-SELECT `p`.`nome`,`c`.`nome` FROM `tb_personagem` AS `p` JOIN `tb_classe` AS `c` ON `p`.`tb_classe_id`=`c`.`id_class` WHERE `c`.`nome` LIKE 'mago';
+SELECT * FROM  `tb_curso` AS `p` JOIN `tb_categoria` AS `c` ON `p`.`tb_categoria_id`=`c`.`id` WHERE `c`.`nome` LIKE 'lampada';

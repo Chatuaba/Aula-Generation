@@ -1,46 +1,46 @@
-CREATE DATABASE `db_generation_game_online`;
+CREATE DATABASE `db_construindo_a_nossa_vida`;
 
-USE `db_generation_game_online`;
+USE `db_construindo_a_nossa_vida`;
 
-CREATE TABLE  `tb_classe`(
-	`id_class` INT NOT NULL auto_increment primary key,
+CREATE TABLE  `tb_categoria`(
+	`id` INT NOT NULL auto_increment primary key,
     `nome` VARCHAR(30) ,
-    `defesa` INT NOT NULL,
-    `ataque` INT NOT NULL
+    `marca`  VARCHAR(30) ,
+    `estoque` BOOLEAN
 );
 
 
-CREATE table `tb_personagem`(
+CREATE table `tb_produto`(
 	`id_char` INT NOT NULL auto_increment primary key,
-	`nivel` INT NOT NULL,
-	`equipamento` VARCHAR(30),
+	`preco` INT NOT NULL,
+	`desconto` BOOLEAN,
     `nome` VARCHAR(30),
-    `inventario` VARCHAR(200),
-    `tb_classe_id` int NOT NULL, 
-    FOREIGN KEY(`tb_classe_id`) REFERENCES `tb_classe` (`id_class`)
+    `cor` VARCHAR(30),
+    `tb_categoria_id` int NOT NULL, 
+    FOREIGN KEY(`tb_categoria_id`) REFERENCES `tb_categoria` (`id`)
 );
 
-INSERT INTO `db_generation_game_online`.`tb_classe` (`nome`, `defesa`, `ataque`) VALUES ('arqueiro', '500', '3500');
-INSERT INTO `db_generation_game_online`.`tb_classe` (`nome`, `defesa`, `ataque`) VALUES ('mago', '-1', '9001');
-INSERT INTO `db_generation_game_online`.`tb_classe` (`nome`, `defesa`, `ataque`) VALUES ('guerreiro', '3000', '2000');
-INSERT INTO `db_generation_game_online`.`tb_classe` (`nome`, `defesa`, `ataque`) VALUES ('bardo', '1500', '1500');
-INSERT INTO `db_generation_game_online`.`tb_classe` (`nome`, `defesa`, `ataque`) VALUES ('barbaro', '1800', '3000');
+INSERT INTO `db_construindo_a_nossa_vida`.`tb_categoria` (`nome`, `marca`, `estoque`) VALUES ('piso', 'bompiso', '20');
+INSERT INTO `db_construindo_a_nossa_vida`.`tb_categoria` (`nome`, `marca`, `estoque`) VALUES ('lampada', 'lux', '50');
+INSERT INTO `db_construindo_a_nossa_vida`.`tb_categoria` (`nome`, `marca`, `estoque`) VALUES ('tijolo', 'tiao', '30');
+INSERT INTO `db_construindo_a_nossa_vida`.`tb_categoria` (`nome`, `marca`, `estoque`) VALUES ('tinta', 'luxcolor', '20');
+INSERT INTO `db_construindo_a_nossa_vida`.`tb_categoria` (`nome`, `marca`, `estoque`) VALUES ('móveis', 'mobili', '10');
 
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('1', 'espada', 'Ferrari', 'camisa', '1');
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('2', 'arco', 'Valar', 'calça', '2');
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('3', 'cajado', 'Marcao', 'cigarro', '3');
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('2', 'machado', 'luiz', 'escudo', '4');
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('3', 'laco', 'jabitu', 'pocao', '5');
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('1', 'chicote', 'frojola', 'comida', '4');
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('2', 'adaga', 'dudu', 'tenda', '3');
-INSERT INTO `db_generation_game_online`.`tb_personagem` (`nivel`, `equipamento`, `nome`, `inventario`, `tb_classe_id`) VALUES ('5000', 'banhammer', 'Trolarin', 'canhaoantidatabase', '2');
+INSERT INTO `db_construindo_a_nossa_vida`.`tb_produto` (`preco`, `desconto`, `nome`, `cor`, `tb_categoria_id`)  VALUES ('20', true, 'lampada60w','branca', '2');
+INSERT INTO `db_construindo_a_nossa_vida`.`tb_produto` (`preco`, `desconto`, `nome`, `cor`, `tb_categoria_id`)  VALUES ('20', false, 'lampada30w','branca', '2');
+INSERT INTO `db_construindo_a_nossa_vida`.`tb_produto` (`preco`, `desconto`, `nome`, `cor`, `tb_categoria_id`)  VALUES ('30', false, 'laminado','branca', '1');
+INSERT INTO `db_construindo_a_nossa_vida`.`tb_produto` (`preco`, `desconto`, `nome`, `cor`, `tb_categoria_id`)  VALUES ('4', true, '20x30','marron', '3');
+INSERT INTO `db_construindo_a_nossa_vida`.`tb_produto` (`preco`, `desconto`, `nome`, `cor`, `tb_categoria_id`)  VALUES ('500', false, 'sofa','preto', '5');
+INSERT INTO `db_construindo_a_nossa_vida`.`tb_produto` (`preco`, `desconto`, `nome`, `cor`, `tb_categoria_id`)  VALUES ('60', true, 'fosca','verde', '4');
+INSERT INTO `db_construindo_a_nossa_vida`.`tb_produto` (`preco`, `desconto`, `nome`, `cor`, `tb_categoria_id`)  VALUES ('200', false, 'cadeira','cinza', '5');
+INSERT INTO `db_construindo_a_nossa_vida`.`tb_produto` (`preco`, `desconto`, `nome`, `cor`, `tb_categoria_id`)  VALUES ('25', false, 'madeira','marron', '1');
 
-SELECT `p`.`nome` FROM `tb_personagem` AS `p` JOIN `tb_classe` AS `c` ON `p`.`tb_classe_id`=`c`.`id_class` WHERE `c`.`ataque` >2000;
+SELECT * FROM `tb_produto` WHERE `preco` > 50.00;
 
-SELECT `p`.`nome` FROM `tb_personagem` AS `p` JOIN `tb_classe` AS `c` ON `p`.`tb_classe_id`=`c`.`id_class` WHERE `c`.`defesa` <2000 AND `c`.`defesa` >1000;
+SELECT * FROM `tb_produto` WHERE `preco` >3.00 AND `preco`<60;
 
-SELECT `p`.`nome` FROM `tb_personagem` AS `p` WHERE `p`.`nome` LIKE '%c%';
+SELECT `nome` FROM `tb_produto` AS `p` WHERE `p`.`nome` LIKE '%c%';
 
-SELECT `p`.`nome` FROM `tb_personagem` AS `p` INNER JOIN `tb_classe` AS `c` ON `p`.`tb_classe_id`=`c`.`id_class` WHERE `c`.`defesa` <2000 AND `c`.`defesa` >1000;
+SELECT * FROM `tb_produto` AS `p` INNER JOIN `tb_categoria` AS `c` ON `p`.`tb_categoria_id`=`c`.`id`;
 
-SELECT `p`.`nome`,`c`.`nome` FROM `tb_personagem` AS `p` JOIN `tb_classe` AS `c` ON `p`.`tb_classe_id`=`c`.`id_class` WHERE `c`.`nome` LIKE 'mago';
+SELECT * FROM `tb_produto` AS `p` JOIN `tb_categoria` AS `c` ON `p`.`tb_categoria_id`=`c`.`id` WHERE `c`.`nome` LIKE 'lampada';
