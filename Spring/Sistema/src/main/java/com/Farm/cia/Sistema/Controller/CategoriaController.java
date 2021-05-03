@@ -1,4 +1,4 @@
-package com.generation.blogpessoal.controller;
+package com.Farm.cia.Sistema.Controller;
 
 import java.util.List;
 
@@ -15,41 +15,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.generation.blogpessoal.model.Tema;
-import com.generation.blogpessoal.repository.TemaRepository;
+import com.Farm.cia.Sistema.Model.Categoria;
+import com.Farm.cia.Sistema.Repository.CategoriaRepository;
 
 @RestController
-@CrossOrigin(origins= "*", allowedHeaders ="*")
-@RequestMapping("/tema")
-public class TemaController {
-
+@RequestMapping("/categoria")
+@CrossOrigin("*")
+public class CategoriaController {
+	
 	@Autowired
-	private TemaRepository repository;
+	private CategoriaRepository repository;
 	
 	@GetMapping
-	public ResponseEntity<List<Tema>> Getall(){
+	public ResponseEntity<List<Categoria>> GetAll(){
 		return ResponseEntity.ok(repository.findAll());
 	}
-	
 	@GetMapping("/{id}")
-	public ResponseEntity<Tema> getById(@PathVariable long id){
-		return repository.findById(id).map(resp-> ResponseEntity.ok(resp))
+	public ResponseEntity<Categoria> GetById(@PathVariable long id){
+		return repository.findById(id)
+				.map(resp-> 	ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
-	
-	@GetMapping("/nome/{nome}")
-	public ResponseEntity<List<Tema>> getByName(@PathVariable String nome){
-		return ResponseEntity.ok(repository.findAllByDescricaoContaining(nome));
-		
+	@GetMapping("/descricao/{descricao}")
+	public ResponseEntity <List<Categoria>> GetByDescricao(@PathVariable String descricao){
+		return ResponseEntity.ok(repository.findAllByDescricaoContaining(descricao));
 	}
+	
 	@PostMapping
-	public ResponseEntity<Tema> post (@RequestBody Tema tema){
-		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(tema));
+	public ResponseEntity<Categoria> post (@RequestBody Categoria categoria){
+		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(categoria));
 	}
 	
 	@PutMapping
-	public ResponseEntity<Tema> put (@RequestBody Tema tema){
-		return ResponseEntity.status(HttpStatus.OK).body(repository.save(tema));
+	public ResponseEntity<Categoria> put (@RequestBody Categoria categoria){
+		return ResponseEntity.status(HttpStatus.OK).body(repository.save(categoria));
 	}
 	
 	@DeleteMapping("/{id}")
