@@ -1,56 +1,79 @@
-.center {
-    text-align: center;
-}
-
-.container {
-    display: flex;
-    flex-flow: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.container-icon {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
-    align-items: flex-end;
-}
-
-.icon {
-    width: 50px;
-    height: 50px;
-}
-
-.menu li {
-    display: inline;
-    padding: 15px;
-}
-
-.text {
-    color: white;
-}
-
-.p-30 {
-    padding: 30px;
-}
-
-.p-10 {
-    padding: 10px;
-}
-
-.br-50 {
-    border-radius: 50px;
-}
-
-.menu li a {
-    text-decoration: none;
-    color: white;
-}
-
-.menu li a:hover {
-    color: rgb(153, 143, 143);
-}
-
-body {
-    background-color: rgb(29, 27, 27);
-}
+        .center {
+            text-align: center;
+        }
+        
+        .container {
+            display: flex;
+            flex-flow: row;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container-icon {
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+            align-items: flex-end;
+            animation: neon 3s alternate infinite ease-in-out;
+            --cor-neon: gray
+        }
+        
+        .icon {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .menu li {
+            display: inline;
+            padding: 15px;
+        }
+        
+        .text {
+            color: white;
+        }
+        
+        .p-30 {
+            padding: 30px;
+        }
+        
+        .p-10 {
+            padding: 10px;
+        }
+        
+        .br-50 {
+            border-radius: 50px;
+        }
+        
+        .menu li a {
+            text-decoration: none;
+            color: white;
+        }
+        
+        .foto {
+            transition: 5s;
+        }
+        
+        .foto :hover {
+            box-shadow: 0 0 5px #868888, 0 0 5px #03e9f4, 0 0 10px #626464, 0 0 10px #03e9f4;
+            -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+        }
+        
+        .menu li a:hover {
+            color: rgb(153, 143, 143);
+        }
+        
+        body {
+            background-color: rgb(29, 27, 27);
+        }
+        
+        @keyframes neon {
+            from {
+                filter: drop-shadow(0 0 0 var(--cor-neon));
+            }
+            to {
+                filter: drop-shadow(0 0 4px var(--cor-neon));
+            }
+        }
+        /*adiciona na classe dos ícones isso aqui \
+ animation: neon 3s alternate infinite ease-in-out;
+    --cor-neon: /seleciona a cor que quer*\
