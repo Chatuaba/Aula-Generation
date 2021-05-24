@@ -13,6 +13,8 @@ function validaNome() {
     if (nome.value.length < 3) {
         txtNome.innerHTML = 'X - Email Inválido'
         txtNome.style.color = 'IndianRed'
+        nomeOk = false
+
     } else {
         txtNome.innerHTML = '✓ - Email Válido'
         txtNome.style.color = 'LightGreen'
@@ -25,6 +27,8 @@ function validaEmail() {
     if (email.value.indexOf('@') == -1 || email.value.indexOf('.') == -1) {
         txtEmail.innerHTML = 'X - Email Inválido'
         txtEmail.style.color = 'IndianRed'
+        emailOk = false
+
     } else {
         txtEmail.innerHTML = ' ✓ - Email Válido'
         txtEmail.style.color = 'LightGreen'
@@ -41,6 +45,7 @@ function validaAssunto() {
         txtAssunto.innerHTML = 'Texto muito grande,Máximo 100 caracteres'
         txtAssunto.style.color = 'IndianRed'
         txtAssunto.style.display = 'block'
+        assuntoOk = false
     } else {
         txtAssunto.style.display = 'none'
         assuntoOk = true
@@ -50,6 +55,9 @@ function validaAssunto() {
 function enviar() {
     if (nomeOk == true && emailOk == true && assuntoOk == true) {
         alert('Formulário enviado com sucesso!')
+        nome.value = ''
+        email.value = ''
+        assunto.value = ''
     } else {
         alert('formulário precisa estar corretamente preenchido')
     }

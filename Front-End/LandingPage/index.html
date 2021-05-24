@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <style>
         .container-icon {
@@ -51,16 +52,16 @@
                   Receitas
                 </a>
                         <ul class="dropdown-menu  bg-warning" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item  bg-warning" href="#">Fritas</a></li>
-                            <li><a class="dropdown-item  bg-warning" href="#">Cozidas</a></li>
+                            <li><a class="dropdown-item  bg-warning" href="#receita">Fritas</a></li>
+                            <li><a class="dropdown-item  bg-warning" href="#receita">Cozidas</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item  bg-warning" href="#">Assadas</a></li>
+                            <li><a class="dropdown-item  bg-warning" href="#receita">Assadas</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contato</a>
+                        <a class="nav-link" href="#contato">Contato</a>
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -113,7 +114,7 @@
         </button>
     </div>
     <!-- /Carrousel -->
-    <p class="d-flex justify-content-center fs-1 text-warning">Receitas</p>
+    <p class="d-flex justify-content-center fs-1 text-warning" id="receita">Receitas</p>
     <!-- Card Deck-->
     <div class="container">
         <div class="row row-cols-1 row-cols-md-2 g-4">
@@ -123,15 +124,19 @@
                     <div class="card-img-overlay">
                         <h5 class="card-title text-dark">Fritas</h5>
                     </div>
+                    <div class="card side back">
+                        <iframe width="550 " height="411" src="https://www.youtube.com/embed/QoQAXZdyok8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
             <div class="col">
-                <div class="card bg-warning">
-                    <div class="card bg-dark text-white">
-                        <img src="https://t2.rg.ltmcdn.com/pt/images/5/0/4/batata_salteada_na_manteiga_7405_orig.jpg" style="height: 305px;" class="card-img" alt="Batata Cozida">
-                        <div class="card-img-overlay">
-                            <h5 class="card-title">Cozida</h5>
-                        </div>
+                <div class="card bg-warning text-dark">
+                    <img src="https://t2.rg.ltmcdn.com/pt/images/5/0/4/batata_salteada_na_manteiga_7405_orig.jpg" style="height: 305px;" class="card-img" alt="Batata Cozida">
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">Cozida</h5>
+                    </div>
+                    <div class="card side back">
+                        <iframe width="550" height="411" src="https://www.youtube.com/embed/di1C7-wSBgg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -142,6 +147,9 @@
                     <div class="card-img-overlay">
                         <h5 class="card-title">Assada</h5>
                     </div>
+                    <div class="card side back">
+                        <iframe width="550" height="411" src="https://www.youtube.com/embed/nrxO1M7g5HA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
             <div class="col">
@@ -150,55 +158,54 @@
                     <div class="card-img-overlay">
                         <h5 class="card-title">Purê</h5>
                     </div>
+                    <div class="card side back">
+                        <iframe width="550" height="411" src="https://www.youtube.com/embed/H6eHH8jkxas" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                        </div>
                 </div>
             </div>
-        </div>
 
 
-        <!-- /Card Deck-->
+            <!-- /Card Deck-->
 
-        <!-- Texto e Vídeo-->
-        <div class="row m-5">
-            <div class="col-md-6  text-warning">
-                <h3>Texto teste</h3>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum aut ab vel ad impedit cumque excepturi obcaecati dolorem, voluptatem blanditiis, illo accusamus quidem reiciendis quod ratione facilis sit. Vitae, aut!</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos ex tempore quidem esse reprehenderit debitis exercitationem et! Dolores optio porro, laudantium similique iure rerum illum, in voluptas ea tempora animi!</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, voluptatibus! Quia tempora ullam quos maxime optio dicta magni adipisci perferendis at quisquam, tenetur molestiae esse, nam sapiente impedit nisi blanditiis!s</p>
+            <!-- Texto e Vídeo-->
+            <div class="row m-5">
+                <div class="col-md-6  text-warning">
+                    <h3>Texto teste</h3>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum aut ab vel ad impedit cumque excepturi obcaecati dolorem, voluptatem blanditiis, illo accusamus quidem reiciendis quod ratione facilis sit. Vitae, aut!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos ex tempore quidem esse reprehenderit debitis exercitationem et! Dolores optio porro, laudantium similique iure rerum illum, in voluptas ea tempora animi!</p>
+                </div>
+                <div class="col-md-6">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/rwyEPcWUR60" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </div>
+            <!-- /Texto e Vídeo-->
 
-            <div class="col-md-6">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/rwyEPcWUR60" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <!--Froms-->
+            <div class="p-30">
+                <form class="text text-warning">
+                    <label for="nome">Nome:</label><br>
+                    <input type="text" id="nome" onkeyup="validaNome()">
+                    <div id="txtNome"></div>
+                    <br>
+                    <label for="email">E-mail:</label><br>
+                    <input type="email" id="email" onkeyup="validaEmail()">
+                    <div id="txtEmail"></div>
+                    <br>
+                    <label for="assunto">Assunto:</label><br>
+                    <textarea name="assunto" id="assunto" cols="60" rows="5" onkeyup="validaAssunto()"></textarea><br>
+                    <div id="txtAssunto"></div>
+                    <br>
+                    <button type="button" onclick="enviar()" class="btn btn-outline-warning">Enviar</button>
+                </form>
             </div>
+            <!--/Froms-->
         </div>
-        <!-- /Texto e Vídeo-->
-
-        <!--Froms-->
-        <div class="p-30">
-            <form class="text text-warning">
-                <label for="nome">Nome:</label><br>
-                <input type="text" id="nome" onkeyup="validaNome()">
-                <div id="txtNome"></div>
-                <br>
-                <label for="email">E-mail:</label><br>
-                <input type="email" id="email" onkeyup="validaEmail()">
-                <div id="txtEmail"></div>
-                <br>
-                <label for="assunto">Assunto:</label><br>
-                <textarea name="assunto" id="assunto" cols="60" rows="5" onkeyup="validaAssunto()"></textarea><br>
-                <div id="txtAssunto"></div>
-                <br>
-                <button type="button" onclick="enviar()" class="btn btn-outline-warning">Warning</button>
-            </form>
-        </div>
-        <!--/Froms-->
-
         <!--Footer-->
 
         <footer>
             <hr>
             <div class="container-icon  text-warning">
                 <div>
-                    <p class="text " style="font-size: 12pt; ">
+                    <p class="text " style="font-size: 12pt; " id="contato">
                         Todos os direitos reservados: Eduardo Lacalle &copy;
                     </p>
                 </div>
@@ -218,11 +225,11 @@
             <div style="text-align: right; ">Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect " title="Pixel perfect ">Pixel perfect</a> from <a href="https://www.flaticon.com/ " title="Flaticon ">www.flaticon.com</a></div>
         </footer>
         <!-- /Footer-->
-    </div>
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-    <script src="assets/js/script.js"></script>
+
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+        <script src="assets/js/script.js"></script>
 
 </body>
 
