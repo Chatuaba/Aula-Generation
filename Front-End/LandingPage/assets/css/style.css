@@ -34,3 +34,21 @@
     text-align: center;
     transform: rotateY(180deg);
 }
+
+.container-icon {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    animation: neon 3s alternate infinite ease-in-out;
+    --cor-neon: gray
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+}
+
+body {
+    background-color: rgb(46, 47, 48);
+}
